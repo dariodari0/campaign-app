@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+This App was deployed on Heroku: https://campaign-app-2018.herokuapp.com/
+
 # CampaignApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
