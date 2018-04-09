@@ -1,0 +1,45 @@
+<ng-container *ngIf="runningCampaignsList.length > 0; else noCampaigns">
+  <h4>
+    Table of running campaings ({{runningCampaignsList.length}}):</h4>
+
+  <table class="table table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Keywords</th>
+        <th>Bid amount</th>
+        <th>Fund</th>
+        <th>Status</th>
+        <th>Town</th>
+        <th>Radius</th>
+        <th>Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of runningCampaignsList, let i = index">
+      <tr>
+        <td>{{i+1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.keywords}}</td>
+        <td>{{item.bid_amount}}</td>
+        <td>{{item.fund}}</td>
+        <td *ngIf="item.status === true; else statusFalse;">On</td>
+        <td>{{item.town}}</td>
+        <td>{{item.radius}}</td>
+        <td>{{item.created}}</td>
+        <td>
+          <button class="btn btn-outline-secondary" (click)="switchOff(item._id)">off</button>
+          <button class="btn btn-outline-danger" (click)="deleteCampaign(item._id)">delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+<ng-template #noCampaigns>
+  <p>No running campaigns to display!</p>
+</ng-template>
+
+<ng-template #statusFalse>
+  <td>Off</td>
+</ng-template>

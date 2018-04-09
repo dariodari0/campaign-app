@@ -1,0 +1,47 @@
+<h4>Add a new Campaign:</h4>
+<form [formGroup]="newCampaignForm" (ngSubmit)="onSubmit()">
+  <div style="display: inline-grid;">
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+    <span *ngIf="newCampaignForm.get('name').invalid && newCampaignForm.get('name').dirty">&#42;it&#39;s mandatory!</span>
+
+
+    <label for="keywords">Keywords:</label>
+    <input type="text" id="keywords" formControlName="keywords">
+    <span *ngIf="newCampaignForm.get('keywords').invalid && newCampaignForm.get('keywords').dirty">&#42;it&#39;s mandatory!</span>
+
+
+    <label for="bid_amount">Bid amount:</label>
+    <input type="text" id="bid_amount" placeholder="min amount: 100" formControlName="bid_amount">
+    <span *ngIf="newCampaignForm.get('bid_amount').invalid && newCampaignForm.get('bid_amount').dirty">&#42;min amount it&#39;s 100!</span>
+
+    <label for="fund">Campaign fund:</label>
+    <input type="text" id="fund" formControlName="fund">
+    <span *ngIf="newCampaignForm.get('fund').invalid && newCampaignForm.get('fund').dirty">&#42;it&#39;s mandatory!</span>
+
+
+    <div>
+      <label for="status">Status: </label>
+      <input type="radio" id="status" [value]="true" formControlName="status">On
+      <input type="radio" id="status" [value]="false" formControlName="status">Off
+      <span *ngIf="newCampaignForm.get('status').invalid && newCampaignForm.get('status').dirty">&#42;it&#39;s mandatory!</span>
+    </div>
+
+    <label for="town">Town: </label>
+    <select id="town" formControlName="town">
+      <option *ngFor="let town of towns" [value]="town">{{town}}</option>
+    </select>
+
+
+    <label for="radius">Radius:</label>
+    <input type="text" id="radius" formControlName="radius">
+    <span *ngIf="newCampaignForm.get('radius').invalid && newCampaignForm.get('radius').dirty">&#42;it&#39;s mandatory!</span>
+
+    <button type="submit" class="btn btn-outline-success" [disabled]="newCampaignForm.invalid">Add</button>
+    <button type="button" class="btn btn-outline-danger" (click)="onReset()">Reset</button>
+
+
+    <app-balance-from-emberald [campFund]="balance"></app-balance-from-emberald>
+  </div>
+
+</form>

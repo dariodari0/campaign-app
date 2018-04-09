@@ -1,0 +1,7 @@
+<p>Actual balance on Emerald account:
+
+  <span [ngClass]="{
+     'text-success': newBalance > 1000,
+      'text-warning': newBalance < 5000,
+      'text-danger': newBalance < 0
+      }">{{newBalance}}</span></p>
